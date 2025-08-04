@@ -1,12 +1,12 @@
 # Examen Skill Python: *Hamburguesería**
 
-------
 
 - #  Administrador de una cafeteria 
   
   Una aplicación de consola creada en Python que permite gestionar la cafeteria de Campuslands.
   
   Este programa ayuda a:
+   Tener mejor conocimiento de la problema de las hamburguesas
   
   
   ## 📂 Estructura del Proyecto
@@ -16,12 +16,12 @@
   ├── main.py # Menú principal y ejecución
   │
   ├── controllers/ # Funciones principales
-  │ ├── agregarElemento.py
-  │ ├── verElementos.py
-  │ ├── buscarElemento.py
-  │ ├── editarElemento.py
-  │ ├── eliminarElemento.py
-  │ └── gestorColecciones.py 
+  │ ├── categorias.py
+  │ ├── chef.py
+  │ ├── hamburguesas.py
+  │ ├── ingredientes.py
+  │ ├── reporte.py
+  │
   │
   ├──utils/
   │── corefiles.py
@@ -32,7 +32,7 @@
   │──config.py
   │
   ├── data/
-  │ ├── coleccion.json # Archivo principal
+  │ ├── 
   │ ├── *.json # Otras colecciones guardadas
   │
   └── README.md
@@ -43,17 +43,11 @@
   
   ##  Funcionalidades
   
-  ### 1. Agregar Elemento
-  Permite registrar un nuevo elemento a la colección indicando:
-  - Tipo: Libro, Película o Música
-  - Título
-  - Autor / Director / Artista
-  - Género
-  - Valoración
-  
+  ### 1. Ingredientes
+  Cumple la funcionalidad del CRUD completo
   ---
   
-  ### 2. Ver Elementos por Categoría
+  ### 2. Categorias
   Muestra solo los elementos de un tipo específico:
   - Ver solo Libros
   - Ver solo Películas
@@ -101,3 +95,4 @@
   python main.py
   ```
 
+Maria Alejandra Garcia Merchan

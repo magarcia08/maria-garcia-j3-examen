@@ -1,4 +1,3 @@
-from utils import screenController as sc
 import utils.screenController as sc
 import utils.validateData as vd
 import utils.corefiles as cf
@@ -26,24 +25,20 @@ def menuRegistroycontrol():
         print("0. Regresar al menú principal")
         print("========================================")
         opcion = input("Seleccione una opción : ").strip()
-
-        match opcion:
-            case "1":
-                crear_ingrediente()
-            case "2":
-                listar_ingrediente()
-            case "3":
-                actualizar_ingrediente()
-            case "4":
-                eliminar_ingrediente()
-            case "4":
-                #Seguimiento del Historial de Ingredientes
-                historial_ingrediente()
-            case "0":
-                sc.limpiar_pantalla()
-                return  
-            case _:
-                print("Opción no válida. Por favor, intente de nuevo.")
+        if opcion == "1":
+            crear_ingrediente()
+        elif opcion == "2":
+            listar_ingrediente()
+        elif opcion == "3":
+            actualizar_ingrediente()
+        elif opcion == "4":
+            eliminar_ingrediente()
+        elif opcion == "5":
+            historial_ingrediente()
+        elif opcion == "0":
+            break
+        else:
+            print("Opción no válida. Por favor, intente de nuevo.")
         sc.pausar_pantalla()
 
 def crear_ingrediente():

@@ -1,4 +1,3 @@
-from utils import screenController as sc
 import utils.screenController as sc
 import utils.validateData as vd
 import utils.corefiles as cf
