@@ -15,13 +15,14 @@ def menuRegistroycontrol():
     while True:
         sc.limpiar_pantalla()
         print("========================================")
-        print(" Bienvenido al Registro de ingredientes ")
+        print(" Bienvenido al Registro de ingredientes y historial ")
         print("========================================")
         print("¿Qué deseas realizar?")
         print("1. Crear")
         print("2. Leer")
         print("3. Actualizar")
-        print("3. Eliminar")    
+        print("4. Eliminar") 
+        print("5. Historial") 
         print("0. Regresar al menú principal")
         print("========================================")
         opcion = input("Seleccione una opción : ").strip()
@@ -35,15 +36,18 @@ def menuRegistroycontrol():
                 actualizar_ingrediente()
             case "4":
                 eliminar_ingrediente()
+            case "4":
+                #Seguimiento del Historial de Ingredientes
+                historial_ingrediente()
             case "0":
                 sc.limpiar_pantalla()
                 return  
             case _:
                 print("Opción no válida. Por favor, intente de nuevo.")
-        sc.pausarPantalla()
+        sc.pausar_pantalla()
 
 def crear_ingrediente():
-    sc.limpiarPantalla()
+    sc.limpiar_pantalla()
     ingredientes = cf.leer_json(cafeteria_ingredientes)
     nombre = vd.validatetext("Ingrese el nombre del ingrediente: ")
     descripción = vd.validatetext("Ingrese la descripcion del ingrediente: ")
@@ -67,10 +71,12 @@ def listar_ingrediente():
     print("\n--- LISTADO DE INGREDIENTES ---")
     for ingres in ingrediente:
         print(f"Nombre: {ingres['nombre']} | Descripcion: {ingres['descripcion']} | Precio: {ingres['precio']} | Stock: {ingres['stock'].capitalize()}")
-    sc.pausar()
+    sc.pausar_pantalla()
 
+
+#en esta funciona se hace verificacion de lo dado para la actualizacion
 def actualizar_ingrediente():
-    sc.limpiarPantalla()
+    sc.limpiar_pantalla()
     ingredientes = cf.leer_json(cafeteria_ingredientes)
     nombre = vd.validatetext("Ingrese el nombre del ingrediente a actualizar: ")
     if nombre in ingredientes:
@@ -88,7 +94,7 @@ def actualizar_ingrediente():
         print(f"El ingrediente '{nombre}' no existe.")
 
 def eliminar_ingrediente():
-    sc.limpiarPantalla()
+    sc.limpiar_pantalla()
     ingredientes = cf.leer_json(cafeteria_ingredientes)
     nombre = vd.validatetext("Ingrese el nombre del ingrediente a eliminar: ")
     if nombre in ingredientes:
@@ -98,3 +104,13 @@ def eliminar_ingrediente():
     else:
         print(f"El ingrediente '{nombre}' no existe.")
 
+def historial_ingrediente():
+    sc.limpiar_pantalla()
+    ingredientes = cf.leer_json(cafeteria_ingredientes)
+    if not ingredientes:
+        print("No hay ingredientes registrados.")
+    else:
+        print("\n--- HISTORIAL DE INGREDIENTES ---")
+        for nombre, info in ingredientes.items():
+            print(f"Nombre: {nombre}, Descripción: {info['descripción']}, Precio: {info['precio']}, Stock: {info['stock']}")
+    sc.pausar_pantalla()

@@ -3,19 +3,19 @@ import os
 from typing import Dict, List, Optional
 from app.config import DB_FILE
 
-def readJson()->Dict:
+def leer_json()->Dict:
     try:
         with open(DB_FILE, "r", encoding="utf-8") as cf:
             return json.load(cf)
     except (FileNotFoundError, json.JSONDecodeError):
         return {}
 
-def writeJson(data : Dict)->Dict:
+def escribir_json(data : Dict)->Dict:
     with open(DB_FILE, "w", encoding="utf-8") as cf:
         json.dump(data, cf, indent=4)
 
-def updateJson(data : Dict, path: Optional[List[str]] = None) -> None:
-    currentData = readJson()
+def actualizar_json(data : Dict, path: Optional[List[str]] = None) -> None:
+    currentData = leer_json()
 
     if not path:
         currentData.update(data)
@@ -26,10 +26,10 @@ def updateJson(data : Dict, path: Optional[List[str]] = None) -> None:
         if path:
             current.setdefault(path[-1], {}).update(data)
     
-    writeJson(currentData)
+    escribir_json(currentData)
 
 def deleteJson(path: List[str])->bool:
-    data = readJson()
+    data = leer_json()
     if not data:
         return False
     
@@ -41,16 +41,16 @@ def deleteJson(path: List[str])->bool:
     
     if path and path[-1] in current:
         del current[path[-1]]
-        writeJson(data)
+        escribir_json(data)
         return True
     return False
 
 def initializeJson(initialStructure:Dict)->None:
     if not os.path.isfile(DB_FILE):
-        writeJson(initialStructure)
+        escribir_json(initialStructure)
     else:
-        currentData = readJson()
+        currentData = leer_json()
         for key, value in initialStructure.items():
             if key not in currentData:
                 currentData[key] = value
-        writeJson(currentData)
+        escribir_json(currentData)

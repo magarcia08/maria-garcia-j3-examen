@@ -11,11 +11,10 @@ def menu_admin():
     while True: 
         sc.limpiar_pantalla()
         print("Bienvenido al sistema de Campuslands Cafeteria")
-        print("1. Registro y Gestión de Ingredientes ")
-        print("2. Seguimiento del Historial de Ingredientes ")
-        print("3. Registro y Gestión de Categorías ")
-        print("4. Registro y Gestión de Chef ")
-        print("5. Registro y Gestión de Hamburguesas ")
+        print("1. Registro y Gestión de Ingredientes y seguimiento del Historial")
+        print("2. Registro y Gestión de Categorías ")
+        print("3. Registro y Gestión de Chef ")
+        print("4. Registro y Gestión de Hamburguesas ")
         opcion = input("Seleccione una opción: ").strip()
         if opcion == "1":
             menuRegistroycontrol()

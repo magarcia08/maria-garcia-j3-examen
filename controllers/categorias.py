@@ -19,7 +19,7 @@ def menuRegistroygestionCategoria():
         print("========================================")
         print("¿Qué deseas realizar?")
         print("1. Crear")
-        print("2. Leer")
+        print("2. Listar")
         print("3. Actualizar")
         print("4. Eliminar")    
         print("0. Regresar al menú principal")
@@ -40,11 +40,11 @@ def menuRegistroygestionCategoria():
                 return  
             case _:
                 print("Opción no válida. Por favor, intente de nuevo.")
-        sc.pausarPantalla()
+        sc.pausar_pantalla()
 
 def crear_categoria():
-    sc.limpiarPantalla()
-    categorias = cf.leer_json(cafeteria_ingredientes)
+    sc.limpiar_pantalla()
+    categorias = cf.leer_json(cafeteria_categorias)
     nombre = vd.validatetext("Ingrese el nombre de la categoría: ")
     descripcion = vd.validatetext("Ingrese la descripción de la categoría: ")
     
@@ -57,9 +57,10 @@ def crear_categoria():
         cf.escribir_json(categorias)
         print(f"Categoría '{nombre}' creada exitosamente.")
 
+#esta funcion de listar se encargara de listar y no comprobar cuando no hayan
 def listar_categoria():
-    sc.limpiarPantalla()
-    categorias = cf.leer_json(cafeteria_ingredientes)
+    sc.limpiar_pantalla()
+    categorias = cf.leer_json(cafeteria_categorias)
     
     if not categorias:
         print("No hay categorias registradas.")
@@ -67,5 +68,31 @@ def listar_categoria():
         print("Categorias registradas:")
         for nombre, info in categorias.items():
             print(f"Nombre: {nombre}, Descripción: {info['descripcion']}")
+        
+
+def actualizar_categoria():
+    sc.limpiar_pantalla()
+    categorias = cf.leer_json(cafeteria_categorias)
+    nombre = vd.validatetext("Ingrese el nombre de la categoría a actualizar: ")
+    
+    if nombre in categorias:
+        nueva_descripcion = vd.validatetext("Ingrese la nueva descripción de la categoría: ")
+        categorias[nombre]["descripcion"] = nueva_descripcion
+        cf.escribir_json(categorias)
+        print(f"Categoría '{nombre}' actualizada exitosamente.")
+    else:
+        print(f"La categoría '{nombre}' no existe.")
+
+def eliminar_categoria():
+    sc.limpiar_pantalla()
+    categorias = cf.leer_json(cafeteria_categorias)
+    nombre = vd.validatetext("Ingrese el nombre de la categoría a eliminar: ")
+    
+    if nombre in categorias:
+        del categorias[nombre]
+        cf.escribir_json(categorias)
+        print(f"Categoría '{nombre}' eliminada exitosamente.")
+    else:
+        print(f"La categoría '{nombre}' no existe.")
 
 

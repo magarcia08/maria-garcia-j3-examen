@@ -1,19 +1,13 @@
-# Proyecto: **Gestión de colección (Python + JSON)**
+# Examen Skill Python: *Hamburguesería**
 
 ------
 
-- #  Administrador de  Libros, Películas y Música
+- #  Administrador de una cafeteria 
   
-  Una aplicación de consola creada en Python que permite gestionar una colección personal de libros, películas o música. donde  se pueden agregar contenidos favoritos con opciones para agregar, buscar, editar, eliminar y guardar colecciones en archivos JSON.
+  Una aplicación de consola creada en Python que permite gestionar la cafeteria de Campuslands.
   
   Este programa ayuda a:
-  - Mantener un registro ordenado de elementos 
-  - Consultar detalles rápidamente (autor, género, puntuación, etc.)
-  - Buscar títulos por nombre, autor o género
-  - Guardar múltiples versiones de colección
-  - Cargar colecciones fácilmente
   
-  ---
   
   ## 📂 Estructura del Proyecto
   

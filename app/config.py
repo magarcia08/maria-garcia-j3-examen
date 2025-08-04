@@ -1,1 +1,1 @@
-DB_FILE = "data/database.json"
+DB_FILE = "data"
